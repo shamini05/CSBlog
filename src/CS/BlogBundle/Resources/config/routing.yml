@@ -1,0 +1,28 @@
+# src/OC/PlatformBundle/Resources/config/routing.yml
+
+cs_blog_home:
+    path:      /{page}
+    defaults:  { _controller: CSBlogBundle:Advert:index, page: 1 }
+    requirements:
+        page: \d*
+
+cs_blog_view:
+    path:      /advert/{id}
+    defaults:  { _controller: CSBlogBundle:Advert:view }
+    requirements:
+            id: \d+
+cs_blog_add:
+    path:      /add
+    defaults:  { _controller: CSBlogBundle:Advert:add }
+
+cs_blog_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: CSBlogBundle:Advert:edit }
+    requirements:
+        id: \d+
+
+cs_blog_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: CSBlogBundle:Advert:delete }
+    requirements:
+        id: \d+

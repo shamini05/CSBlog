@@ -1,0 +1,19 @@
+cs_blog_homepage:
+    path:     /hello-world
+    defaults: { _controller: CSBlogBundle:Advert:index }
+
+
+
+cs_blog:
+    resource: "@CSBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
+login:
+    pattern:   /login
+    defaults:  { _controller: CSUserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout

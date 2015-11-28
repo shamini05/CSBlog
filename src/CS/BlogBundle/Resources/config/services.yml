@@ -1,0 +1,11 @@
+parameters:
+    mon_parametre: ma_valeur
+
+services:
+#    cs_blog.example:
+#        class: CS\BlogBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    cs_blog.antispam:
+        class: CS\BlogBundle\Antispam\CSAntispam
+        arguments: [@mailer, %locale%, 50]

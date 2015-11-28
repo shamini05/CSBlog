@@ -1,0 +1,54 @@
+{# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
+
+{% extends "CSBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    Lecture d'une annonce - {{ parent() }}
+{% endblock %}
+
+{% block csblog_body %}
+    
+    {#<h2>{{ advert.title }}</h2>#}
+    {#<i>Par {{ advert.author }}, le {{ advert.date|date('d/m/Y') }}</i>#}
+
+    {#<div class="well">#}
+        {#{{ advert.content }}#}
+    {#</div>#}
+
+    {#<p>#}
+        {#<a href="{{ path('cs_blog_home') }}" class="btn btn-default">#}
+            {#<i class="glyphicon glyphicon-chevron-left"></i>#}
+            {#Retour à la liste#}
+        {#</a>#}
+
+    {#</p>#}
+    <div style="width:auto; text-align:center">
+        <h2>{{ advert.title }}</h2>
+        <i>Par {{ advert.author }}, le {{ advert.date|date('d/m/Y') }}</i>
+
+        <div class= "container">
+            <p>{{ advert.content }}</p>
+            <p>{% if advert.image is not null %}
+                <img src="{{ advert.image.url }}" alt="{{ advert.image.alt }}">
+            {% endif %}</p>
+        </div>
+
+
+        <p>
+
+            <a href="{{ path('cs_blog_homepage') }}" class="btn btn-default">
+                Retour à la liste des articles
+
+            </a>
+            <a href="{{ path('cs_blog_edit', {'id': advert.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier l'annonce
+            </a>
+            <a href="{{ path('cs_blog_delete', {'id': advert.id}) }}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            Supprimer l'annonce
+            </a>
+
+        </p>
+    </div>
+{% endblock %}
