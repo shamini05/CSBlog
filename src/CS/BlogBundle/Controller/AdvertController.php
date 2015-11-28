@@ -84,7 +84,7 @@ class AdvertController extends Controller
                 $em->persist($image);
                 $em->persist($advert);
                 $em->flush();
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce a bien été enregistrée.');
+                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
                 return $this->redirect($this->generateUrl('cs_blog_view', array('id' => $advert->getId())));
             }
             return $this->render('CSBlogBundle:Advert:add.html.twig', array('form' => $form->createView()));
@@ -101,12 +101,12 @@ class AdvertController extends Controller
         $advert =$this->getAdvert($id);
             $formBuilder=$this->get('form.factory')->createBuilder('form', $advert);
         $formBuilder
-            ->add('titre','text')
-            ->add('','textarea')
-            ->add('mettre en ligne','checkbox')
-            ->add('enregistrer','submit');
+            ->add('title','text')
+            ->add('content','textarea')
+            ->add('published','checkbox')
+            ->add('save','submit');
         $form = $formBuilder->getForm();
-        $formBuilder->add('mettre en ligne', 'checkbox', array('required' => false));
+        $formBuilder->add('published', 'checkbox', array('required' => false));
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em=$this->getDoctrine()

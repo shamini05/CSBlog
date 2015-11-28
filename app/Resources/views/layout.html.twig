@@ -3,6 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+
+        body{background-image:url(http://princesse-guerriere.com/wp-content/uploads/2013/03/motif_3.jpg)}
+
+        .jumbotron {
+            font-size: 63px;
+            font-family: cursive;
+            background-color:#F2F0E3 !important;
+        }
+
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,7 +27,8 @@
 </head>
 
 <body>
-<div class="container">
+<link rel="stylesheet" href="{{ asset('bundles/csblog/css/main.css') }}" type="text/css" />
+<div class="page-content ">
     <div id="header" class="jumbotron">
         <h1>Bienvenue sur notre Blog [ Cissé & Soundrakumar]</h1>
         <p>
@@ -39,12 +51,12 @@
                 <li><a href="{{ path('cs_blog_home') }}">Accueil</a></li>
                 <li><a href="{{ path('cs_blog_add') }}">Ajouter une annonce</a></li>
             </ul>
-                <h4>Derniers posts</h4>
+                <ul><li>Derniers posts</li><ul>
                 {{ render(controller("CSBlogBundle:Advert:menu", {'limit': 3})) }}
             {% endif %}
 
         </div>
-        <div id="content" class="col-md-9">
+        <div id="content" class="page-content-wrapper">
             {% block body %}
 
             {% endblock %}
