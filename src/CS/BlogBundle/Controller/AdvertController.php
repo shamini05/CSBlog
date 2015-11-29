@@ -6,12 +6,9 @@ namespace CS\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use CS\BlogBundle\Entity\Advert;
-use CS\BlogBundle\Entity\Image;
+use CS\BlogBundle\Form\ImageType;
 
 class AdvertController extends Controller
 { // ************************* INDEX ACTION ***************************************************************************
@@ -27,8 +24,7 @@ class AdvertController extends Controller
     private function getAll(){
         $em=$this->getDoctrine()
             ->getManager();
-        $repository = $em->getRepository('CSBlogBundle:Advert')
-        ;
+        $repository = $em->getRepository('CSBlogBundle:Advert');
         $listAdverts= $repository->findAll();
         return $listAdverts;
     }
@@ -55,8 +51,6 @@ class AdvertController extends Controller
     }
 
 // ************************* ADD ACTION ***************************************************************************
-
-
         public function addAction(Request $request)
         {
             // Création de l'entité Advert
@@ -68,6 +62,7 @@ class AdvertController extends Controller
                 ->add('content','textarea')
                 ->add('author','text')
                 ->add('published','checkbox')
+                ->add('image',      new ImageType())
                 ->add('save','submit');
             $form = $formBuilder->getForm();
             $formBuilder->add('published', 'checkbox', array('required' => false));
@@ -76,11 +71,7 @@ class AdvertController extends Controller
             $em = $this->getDoctrine()->getManager();
             if ($form->isValid()) {
                 // Création de l'entité Image
-                $image = new Image();
-                $image->setUrl('http://sdz-upload.s3.amazonaws.com/prod/upload/job-de-reve.jpg');
-                $image->setAlt('Job de rêve');
-                // On lie l'image à l'annonce
-                $advert->setImage($image);
+                $image = $advert->getImage();
                 $em->persist($image);
                 $em->persist($advert);
                 $em->flush();
@@ -99,11 +90,13 @@ class AdvertController extends Controller
     {
 
         $advert =$this->getAdvert($id);
+
             $formBuilder=$this->get('form.factory')->createBuilder('form', $advert);
         $formBuilder
             ->add('title','text')
             ->add('content','textarea')
             ->add('published','checkbox')
+            ->add('image',      new ImageType())
             ->add('save','submit');
         $form = $formBuilder->getForm();
         $formBuilder->add('published', 'checkbox', array('required' => false));
@@ -111,6 +104,7 @@ class AdvertController extends Controller
         if ($form->isValid()) {
             $em=$this->getDoctrine()
                 ->getManager();
+            $em->persist($advert->getImage());
             $em->persist($advert);
             $em->flush();
             $request->getSession()->getFlashBag()->add('notice', 'Le post a bien été enregistrée.');
