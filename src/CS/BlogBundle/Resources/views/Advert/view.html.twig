@@ -1,4 +1,4 @@
-{# src/OC/PlatformBundle/Resources/view/Advert/view.html.twig #}
+
 
 {% extends "CSBlogBundle::layout.html.twig" %}
 
@@ -37,16 +37,16 @@
         <p>
 
             <a href="{{ path('cs_blog_homepage') }}" class="btn btn-default">
-                Retour à la liste des articles
+                Retour à la liste des recettes
 
             </a>
             <a href="{{ path('cs_blog_edit', {'id': advert.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-edit"></i>
-            Modifier l'annonce
+            Modifier la recette
             </a>
             <a href="{{ path('cs_blog_delete', {'id': advert.id}) }}" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>
-            Supprimer l'annonce
+            Supprimer la recette
             </a>
 
         </p>

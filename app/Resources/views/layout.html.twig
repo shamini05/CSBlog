@@ -5,14 +5,125 @@
 <head>
     <style>
 
-        body{background-image:url(http://princesse-guerriere.com/wp-content/uploads/2013/03/motif_3.jpg)}
+        body{
+            background-image:url(http://www.saveurs-et-tendances.fr/wp-content/uploads/2013/04/macarons.jpg);
 
-        .jumbotron {
-            font-size: 63px;
-            font-family: cursive;
-            background-color:#F2F0E3 !important;
+        color:rgba(51, 51, 51, 0.77) !important;
+        /*font-size: 20px !important;*/
+        margin-left: -145px;
+            margin: -22px;
         }
 
+        .jumbotron h1 {
+
+
+            font-size: 104px !important;
+        }
+
+        .jumbotron {
+
+            font-family: cursive;
+            /*background-color:#F2F0E3 !important;*/
+            padding:63px !important;
+            background-color: rgba(252, 248, 227, 0)!important;
+        }
+        .well {
+            min-height: 31px;
+            padding: 39px;
+            margin-bottom: 54px;
+            background-color: rgba(247, 199, 200, 0.36) !important;
+            border: 5px solid rgba(235, 99, 100, 0.23) !important;
+            border-radius: 54px !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+        }
+        textarea {
+
+            overflow-wrap: initial;
+            overflow-x: inherit;
+            overflow-y: hidden;
+        }
+        h2, .h2 {
+            font-size: 63px !important;
+            font-family: cursive !important;
+        }
+        label.required {
+            padding: 8px;
+            font-style: normal;
+            font-size: large;
+        }
+        label.required {
+            padding: 8px;
+        }
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 32px;
+            font-weight: 700;
+        }
+        .jumbotron p {
+
+            font-family: "Comic Sans MS";
+
+        }
+        .jumbotron h1{
+
+            text-align: center;
+
+        }
+        a {
+            color: rgba(51, 51, 51, 0.77) !important;
+            text-decoration: none;
+            font-family: cursive;
+            font-style: italic;
+            font-size: x-large;
+        }
+        input, button, select, textarea {
+            font-family: cursive;
+            font-size: -webkit-xxx-large;
+            line-height: normal;
+        }
+        input[type=submit] {
+            -webkit-appearance: initial;
+            cursor: se-resize;
+        }
+        .col-md-3 {
+            position: relative !important;
+            min-height: 1px !important;
+            padding-right: 36px !important;
+            padding-left: 30px !important;
+            background-color: rgba(248, 207, 199, 0.53) !important;
+            margin-top: -30px !important;
+            margin-right: 0px!important;
+            height: 100% !important;
+            border: 5px solid rgba(235, 99, 100, 0.23) !important;
+            border-radius: 54px !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+            margin-top: 22px !important;
+
+        }
+
+        .col-md-3{
+            width: 21%;
+        }
+        div#content {
+            padding-left: 31%;
+            background-color: rgba(255,255,255,0.7);
+            padding-bottom: 9%;
+        }
+        button, input, optgroup, select, textarea {
+            margin: 5px;
+        font-size: 24px !important;
+            font-family: monospace;
+            border-radius: 54px !important;
+            text-align: center;
+        }
+        input[type=submit] {
+            -webkit-appearance: button;
+            cursor: pointer;
+            margin: 39px;
+        }
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +141,9 @@
 <link rel="stylesheet" href="{{ asset('bundles/csblog/css/main.css') }}" type="text/css" />
 <div class="page-content ">
     <div id="header" class="jumbotron">
-        <h1>Bienvenue sur notre Blog [ Cissé & Soundrakumar]</h1>
+        <h1>Cuisiner...Tout simplement ! </h1>
         <p>
-            Ce projet est conçu dans le cadre d'un projet scolaire à l'ESIEA.
+
         </p>
         {#<p>#}
             {#<a class="btn btn-primary btn-lg" href="http://www.esiea.fr/?gclid=CPPu7ay2q8kCFQnmwgodYJMPMQ">#}
@@ -49,9 +160,9 @@
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="{{ path('logout') }}">Déconnexion</a></li>
                 <li><a href="{{ path('cs_blog_home') }}">Accueil</a></li>
-                <li><a href="{{ path('cs_blog_add') }}">Ajouter une annonce</a></li>
+                <li><a href="{{ path('cs_blog_add') }}">Ajouter une recette</a></li>
             </ul>
-                <ul><li>Derniers posts</li><ul>
+                <ul><li>Dernières recette</li><ul>
                 {{ render(controller("CSBlogBundle:Advert:menu", {'limit': 3})) }}
             {% endif %}
 
@@ -66,7 +177,7 @@
     <hr>
 
     <footer>
-        <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+        <p> Cissé & Soundrakumar © {{ 'now'|date('Y') }}vf</p>
     </footer>
 </div>
 
