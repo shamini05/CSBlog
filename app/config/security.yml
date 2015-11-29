@@ -12,7 +12,7 @@ security:
         in_memory:
             memory:
                 users:
-                    shamini:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
